@@ -1,5 +1,5 @@
 {
-  "name": "carecart",
+  "name": "CareCart",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "css": "^3.0.0",
+    "jquery": "^3.5.1",
     "leaflet": "^1.7.1",
     "vue": "^2.6.11"
   },

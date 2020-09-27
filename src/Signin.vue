@@ -1,31 +1,34 @@
 <template>
-  <div id="signin-component">
-       <div id="login" v-if="isLogin==true">
-            <h1>Log in</h1>
-            <input v-model="lemail" id="lemail" type="email" placeholder="Email">
-            <input v-model="lpassword" id="lpassword" placeholder="Password" type="password">
-            <button @click="requestLogin" id="lsubmit">Submit</button>
-            <button @click="isLogin=false">Dont have an account?</button>
-            <span id="error"></span>
-       </div>
-       <div id="signup" v-else>
-            <h1>Sign up</h1>
-            <input v-model="email" id="email" type="email" placeholder="Email">
-            <input v-model="password" id="lpassword" placeholder="Password" type="password">
-            <input v-model="first" id="first" placeholder="First name">
-            <input v-model="last" id="last" placeholder="Last name">
-            <input v-model="address" id="address" placeholder="Address">
-            <button @click="requestSignup" id="submit">Submit</button>
-            <button @click="isLogin=true">Already have an account?</button>
-            <span id="error"></span>
-       </div>
-       <div @click="$emit('close')" id="overlay"></div>
-  </div>
-  
+     <div id="big">
+          <div id="signin-component">
+               <div id="login" v-if="isLogin==true">
+                    <h1>Log in</h1>
+                    <input v-model="lemail" id="lemail" type="email" placeholder="Email">
+                    <input v-model="lpassword" id="lpassword" placeholder="Password" type="password">
+                    <button @click="requestLogin" id="lsubmit">Submit</button>
+                    <button @click="isLogin=false">Dont have an account?</button>
+                    <span id="error"></span>
+               </div>
+               <div id="signup" v-else>
+                    <h1>Sign up</h1>
+                    <input v-model="email" id="email" type="email" placeholder="Email">
+                    <input v-model="password" id="lpassword" placeholder="Password" type="password">
+                    <input v-model="first" id="first" placeholder="First name">
+                    <input v-model="last" id="last" placeholder="Last name">
+                    <input v-model="address" id="address" placeholder="Address">
+                    <button @click="requestSignup" id="submit">Submit</button>
+                    <button @click="isLogin=true">Already have an account?</button>
+                    <span id="error"></span>
+               </div>
+          </div>
+          <div @click="$emit('close')" id="overlay"></div>
+     </div>
 </template>
 
 <script>
 import axios from "axios";
+import jquery from 'jquery';
+var $ = require( "jquery" );
 export default {
      props: ['login'],
      data () {
@@ -130,8 +133,9 @@ export default {
 
                     .then((response) => {
 
+                         console.log('ewwq');
                          let token = response.data.token;
-                         localStorage.setItem('token',token)
+                         localStorage.setItem('token',token);
                          this.$emit('signedIn');
 
                     })
@@ -152,6 +156,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "./helper.scss";
+#big {
+     width: 100vw;
+     height: 100vh;
+     position: relative;
+}
      #signin-component {
           z-index: 20;
           position: fixed;
@@ -172,7 +181,9 @@ export default {
           #signup {
                @extend #login;
           }
-          #overlay {
+          
+     }
+     #overlay {
           position: fixed;
           top: 0;
           left: 0;
@@ -181,7 +192,6 @@ export default {
           height: 100vh;
           background: rgba(44, 41, 54, 0.288);
           backdrop-filter: blur(25px);
-     }
      }
      
 </style>
