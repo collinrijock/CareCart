@@ -1,0 +1,28 @@
+$off: #FFF6E3;
+$red1: #FF2473;
+$red2: #E75476;
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato:wght@400;700;900&display=swap');
+
+
+.clear {
+     padding: 0;
+     outline: none;
+     border: none;
+     margin: 0;
+     position: relative;
+     box-sizing: border-box;
+}
+
+
+.flex-row {
+     display: flex;
+     flex-flow: row nowrap;
+     align-items: center;
+     justify-content: center;
+}
+
+.flex-column {
+     @extend .flex-row;
+     flex-direction: column;
+}
